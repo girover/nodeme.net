@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccb0d2aee6e2b45fdb605bee82840d45",
+    "content-hash": "1be63517efcd4362076849a7248dc268",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,68 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "coinbase/coinbase-commerce",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./../coinbase-commerce-php",
+                "reference": "80e34b5622cbf1bc513c62f43b9451df40bcefdf"
+            },
+            "archive": {
+                "exclude": [
+                    "/tests",
+                    "/examples",
+                    "/.circleci"
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.0|~6.0|~7.0",
+                "php": ">=5.4.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CoinbaseCommerce\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "CoinbaseCommerce\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "./vendor/bin/phpcs"
+                ],
+                "test": [
+                    "./vendor/bin/phpunit --verbose"
+                ],
+                "coverage": [
+                    "./vendor/bin/phpunit --coverage-text"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Coinbase Commerce API library",
+            "homepage": "https://commerce.coinbase.com/",
+            "keywords": [
+                "bitcoin",
+                "coinbase",
+                "coinbase-commerce",
+                "ethereum",
+                "litecoin"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "dflydev/dot-access-data",
@@ -507,6 +569,148 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "girover/cart",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../girover-packages/cart",
+                "reference": "07a5e1584a2fc90036a2a29d98774ab8cd3b76ad"
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.23",
+                "vimeo/psalm": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Girover\\Cart\\CartServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Girover\\Cart\\": "src"
+                },
+                "files": [
+                    "./src/helpers.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Girover\\Cart\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "psalm": [
+                    "vendor/bin/psalm"
+                ],
+                "test": [
+                    "./vendor/bin/testbench package:test --parallel --no-coverage"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Majed Girover",
+                    "email": "girover.mhf@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "shopping cart package for laravel",
+            "homepage": "https://github.com/girover/cart",
+            "keywords": [
+                "cart",
+                "girover",
+                "laravel"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "girover/sequent-numbers",
+            "version": "v0.1.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/girover/sequent-numbers.git",
+                "reference": "3da467862ac26de36a88e65fd1cc8ebf4428feb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/girover/sequent-numbers/zipball/3da467862ac26de36a88e65fd1cc8ebf4428feb8",
+                "reference": "3da467862ac26de36a88e65fd1cc8ebf4428feb8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.23",
+                "vimeo/psalm": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Girover\\SequentNumbers\\SequentNumbersServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Girover\\SequentNumbers\\": "src",
+                    "Girover\\SequentNumbers\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Majed Girover",
+                    "email": "girover.mhf@gmail.com",
+                    "homepage": "http://girover.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generating database table for Sequent Numbers as strings",
+            "homepage": "https://github.com/girover/sequent-numbers-table",
+            "keywords": [
+                "girover",
+                "laravel",
+                "numbers",
+                "sequent"
+            ],
+            "support": {
+                "issues": "https://github.com/girover/sequent-numbers/issues",
+                "source": "https://github.com/girover/sequent-numbers/tree/v0.1.0-alpha"
+            },
+            "time": "2022-07-09T16:38:51+00:00"
         },
         {
             "name": "girover/tree",
@@ -5534,6 +5738,63 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+            "name": "laravel/breeze",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "e98e855ab4bde5bf0083c4a4d73c0f5b474241ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/e98e855ab4bde5bf0083c4a4d73c0f5b474241ae",
+                "reference": "e98e855ab4bde5bf0083c4a4d73c0f5b474241ae",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^8.42|^9.0",
+                "illuminate/support": "^8.42|^9.0",
+                "illuminate/validation": "^8.42|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2022-06-28T11:52:06+00:00"
+        },
+        {
             "name": "laravel/sail",
             "version": "v1.15.0",
             "source": {
@@ -7883,7 +8144,11 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "coinbase/coinbase-commerce": 20,
+        "girover/cart": 20,
+        "girover/sequent-numbers": 15
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

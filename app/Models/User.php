@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Concerns\HasRole;
+use App\Concerns\HasUuid;
+use Girover\Cart\Concerns\HasCart;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasUuid, HasRole, HasCart;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +44,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get products of this user
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(UserProduct::class, 'user_id', 'id');
+    }
 }
