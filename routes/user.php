@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/secret/{invited_by_hashId}/invite/{invited_by_uuid}');
     });
 
-    
+
     //Capturing Webhook that is sent to this endpoint.
     Route::controller(WebhookController::class)->group(function(){
         Route::post('webhook', 'capture')->name('webhook');
