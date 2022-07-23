@@ -1,12 +1,5 @@
-@component('mail::message')
-# Introduction
+Hi
+{{$user->name}} has sent you this invitation:
 
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+click this botton to get started:
+<a href="{{route('home')}}"> Get Started </a>
