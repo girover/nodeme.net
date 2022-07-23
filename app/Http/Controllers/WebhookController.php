@@ -18,7 +18,7 @@ class WebhookController extends Controller
     {
         $event = Webhook::capture();
 
-        Cart::where('user_id', 1)->update(['cart'=>serialize(json_decode($event))]);
+        Cart::where('user_id', 1)->update(['cart'=>json_encode($event)]);
         return response(200);
         switch ($event->type) {
             case WebhookStatus::CHARGE_CREATED:
