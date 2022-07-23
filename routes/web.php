@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ Route::get('/', function () {
 })->name('home');
 
 
+//Capturing Webhook that is sent to this endpoint.
+Route::controller(WebhookController::class)->group(function(){
+    Route::post('webhook', 'capture')->name('webhook');
+});
 
 require __DIR__.'/guest.php';
 require __DIR__.'/user.php';

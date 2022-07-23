@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Coinbase\Webhook;
 use App\Enums\WebhookStatus;
+use Girover\Cart\Models\Cart;
 use Illuminate\Http\Request;
 
 class WebhookController extends Controller
@@ -17,28 +18,30 @@ class WebhookController extends Controller
     {
         $event = Webhook::capture();
 
+        Cart::where('user_id', 1)->update(['cart'=>serialize(json_decode($event))]);
+        return response(200);
         switch ($event->type) {
             case WebhookStatus::CHARGE_CREATED:
-                # code...
+                return WebhookStatus::CHARGE_CREATED;
                 break;
             case WebhookStatus::CHARGE_CONFIRMED:
-                # code...
+                return WebhookStatus::CHARGE_CONFIRMED;
                 break;
             case WebhookStatus::CHARGE_DELAYED:
-                # code...
+                return WebhookStatus::CHARGE_DELAYED;
                 break;
             case WebhookStatus::CHARGE_PENDING:
-                # code...
+                return WebhookStatus::CHARGE_PENDING;
                 break;
             case WebhookStatus::CHARGE_FAILED:
-                # code...
+                return WebhookStatus::CHARGE_FAILED;
                 break;
             case WebhookStatus::CHARGE_RESOLVED:
-                # code...
+                return WebhookStatus::CHARGE_RESOLVED;
                 break;
             
             default:
-                # code...
+                return 'no webhook';
                 break;
         }
     }
