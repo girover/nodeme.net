@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Coinbase\Webhook;
 use App\Enums\WebhookStatus;
+use Carbon\Carbon;
 use Girover\Cart\Models\Cart;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,13 @@ class WebhookController extends Controller
     {
         $event = Webhook::capture();
 
-        Cart::where('user_id', 1)->update(['cart'=>json_encode($event)]);
+        // Cart::where('user_id', 1)->update(['cart'=>json_encode($event)]);
 
 
 
 //write json to file
-file_put_contents(storage_path("data.json"), $event);
+$timestamp = Carbon::now()->timestamp;
+file_put_contents(storage_path($timestamp.".json"), $event);
    
         return response(200);
         switch ($event->type) {
