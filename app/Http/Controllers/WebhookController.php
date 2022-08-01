@@ -18,7 +18,7 @@ class WebhookController extends Controller
     public function capture(Request $request)
     {
         $payload_as_array = Webhook::capture();
-        // $charge = new Charge($payload_as_array);
+        $charge = new Charge($payload_as_array);
 
         // $s = [
         //     'checkout_id' => $charge->checkoutId(),
