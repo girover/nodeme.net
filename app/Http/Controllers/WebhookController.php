@@ -23,7 +23,7 @@ class WebhookController extends Controller
         $s = [
             'checkout_id' => $charge->checkoutId(),
             'charge_type' => $charge->type(),
-            // 'payload'     => json_encode($charge->payload),
+            'payload'     => json_encode($charge->payload),
         ];
         $timestamp = \Carbon\Carbon::now()->timestamp;
         file_put_contents(storage_path($timestamp.".json"), json_encode($s));
