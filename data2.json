@@ -2,72 +2,41 @@
     "attempt_number": 1,
     "event": {
         "api_version": "2018-03-22",
-        "created_at": "2022-07-31T21:45:54Z",
+        "created_at": "2022-07-31T21:47:29Z",
         "data": {
             "id": "bf9176b5-ddd9-4527-8b34-8dbf5ebd989e",
             "code": "2HLKTW39",
             "name": "b8fc39e8-cb39-4074-9146-412160be9a90",
             "utxo": false,
             "pricing": {
-                "dai": {
-                    "amount": "0.999950002499875006",
-                    "currency": "DAI"
-                },
-                "usdc": {
-                    "amount": "1.000000",
-                    "currency": "USDC"
-                },
-                "local": {
-                    "amount": "1.00",
-                    "currency": "USD"
-                },
-                "tether": {
-                    "amount": "0.999755",
-                    "currency": "USDT"
-                },
+                "dai": { "amount": "0.999950002499875006", "currency": "DAI" },
+                "usdc": { "amount": "1.000000", "currency": "USDC" },
+                "local": { "amount": "1.00", "currency": "USD" },
+                "tether": { "amount": "0.999755", "currency": "USDT" },
                 "apecoin": {
                     "amount": "0.142979696883042608",
                     "currency": "APE"
                 },
-                "bitcoin": {
-                    "amount": "0.00004226",
-                    "currency": "BTC"
-                },
-                "dogecoin": {
-                    "amount": "14.28367376",
-                    "currency": "DOGE"
-                },
-                "ethereum": {
-                    "amount": "0.000587000",
-                    "currency": "ETH"
-                },
-                "litecoin": {
-                    "amount": "0.01620877",
-                    "currency": "LTC"
-                },
+                "bitcoin": { "amount": "0.00004226", "currency": "BTC" },
+                "dogecoin": { "amount": "14.28367376", "currency": "DOGE" },
+                "ethereum": { "amount": "0.000587000", "currency": "ETH" },
+                "litecoin": { "amount": "0.01620877", "currency": "LTC" },
                 "shibainu": {
                     "amount": "83647.009619406000000000",
                     "currency": "SHIB"
                 },
-                "bitcoincash": {
-                    "amount": "0.00690536",
-                    "currency": "BCH"
-                }
+                "bitcoincash": { "amount": "0.00690536", "currency": "BCH" }
             },
-            "checkout": {
-                "id": "dcc66bc6-9029-44d6-899a-ed6a7972f64b"
-            },
+            "checkout": { "id": "dcc66bc6-9029-44d6-899a-ed6a7972f64b" },
             "fee_rate": 0.01,
             "logo_url": "",
-            "metadata": {
-                "email": "majed@majed.com"
-            },
+            "metadata": { "email": "majed@majed.com" },
             "payments": [],
             "resource": "charge",
-            "timeline": [{
-                "time": "2022-07-31T21:45:54Z",
-                "status": "NEW"
-            }],
+            "timeline": [
+                { "time": "2022-07-31T21:45:54Z", "status": "NEW" },
+                { "time": "2022-07-31T21:47:29Z", "status": "CANCELED" }
+            ],
             "addresses": {
                 "dai": "0xc6e199245611c0c8a7af9d59d8744907f386347a",
                 "usdc": "0xc6e199245611c0c8a7af9d59d8744907f386347a",
@@ -130,10 +99,10 @@
                 "USDT-USD": "1.000245"
             }
         },
-        "id": "7ff7177a-bd38-46ca-b83a-6e9509367b20",
+        "id": "17114ae6-ce88-4910-83a3-cbe71257036a",
         "resource": "event",
-        "type": "charge:created"
+        "type": "charge:failed"
     },
-    "id": "8d708598-dbf8-48e1-aa21-bd936b06c0c3",
-    "scheduled_for": "2022-07-31T21:45:54Z"
+    "id": "a303561e-63ac-4746-a635-1375b0607a09",
+    "scheduled_for": "2022-07-31T21:47:29Z"
 }

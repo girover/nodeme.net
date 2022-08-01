@@ -19,7 +19,9 @@ class Webhook {
             http_response_code(200);
             echo sprintf('Successfully verified event with id %s and type %s.', $event->id, $event->type);
             
-            return $payload;
+            // Get payload json as an array 
+            return json_decode($payload, true);
+
         } catch (\Exception $exception) {
             http_response_code(400);
             echo 'Error occurred. ' . $exception->getMessage();

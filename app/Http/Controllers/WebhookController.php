@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Coinbase\Charge;
 use App\Coinbase\Webhook;
 use App\Enums\WebhookStatus;
+use App\Models\Charge as ChargeModel;
 use Carbon\Carbon;
 use Girover\Cart\Models\Cart;
 use Illuminate\Http\Request;
@@ -17,18 +19,21 @@ class WebhookController extends Controller
      */
     public function capture(Request $request)
     {
-        $event = Webhook::capture();
+        $payload_as_array = Webhook::capture();
+        $charge = new Charge($payload_as_array);
 
-        // Cart::where('user_id', 1)->update(['cart'=>json_encode($event)]);
-
-
-
-//write json to file
-$timestamp = Carbon::now()->timestamp;
-file_put_contents(storage_path($timestamp.".json"), $event);
+        ChargeModel::create([
+            'checkout_id' => $charge->checkoutId(),
+            'charge_type' => $charge->type(),
+            'payload'     => json_encode($charge->payload),
+        ]);
+// //write json to file
+// $timestamp = Carbon::now()->timestamp;
+// file_put_contents(storage_path($timestamp.".json"), $event);
    
         return response(200);
-        switch ($event->type) {
+        
+        switch ($charge->type()) {
             case WebhookStatus::CHARGE_CREATED:
                 return WebhookStatus::CHARGE_CREATED;
                 break;
