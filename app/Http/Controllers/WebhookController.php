@@ -26,7 +26,7 @@ class WebhookController extends Controller
         //     // 'payload'     => json_encode($charge->payload),
         // ];
         $timestamp = \Carbon\Carbon::now()->timestamp;
-        file_put_contents(storage_path('charges/'.$timestamp.".json"), json_encode($payload_as_array));
+        file_put_contents(storage_path($timestamp.".json"), json_encode($payload_as_array));
         // file_put_contents(storage_path($timestamp.".json"), json_encode($charge->payload));
         
        
