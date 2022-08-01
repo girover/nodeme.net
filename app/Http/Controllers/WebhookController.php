@@ -20,14 +20,25 @@ class WebhookController extends Controller
         $payload_as_array = Webhook::capture();
         $charge = new Charge($payload_as_array);
 
+        $s = [
+            'checkout_id' => $charge->checkoutId(),
+            'charge_type' => $charge->type(),
+            'payload'     => json_encode($charge->payload),
+        ];
         $timestamp = \Carbon\Carbon::now()->timestamp;
-        file_put_contents(storage_path($timestamp.".json"), json_encode($charge->payload));
+        file_put_contents(storage_path($timestamp.".json"), json_encode($s));
+        // file_put_contents(storage_path($timestamp.".json"), json_encode($charge->payload));
         
         ChargeModel::create([
             'checkout_id' => $charge->checkoutId(),
             'charge_type' => $charge->type(),
             'payload'     => json_encode($charge->payload),
         ]);
+        // ChargeModel::create([
+        //     'checkout_id' => $charge->checkoutId(),
+        //     'charge_type' => $charge->type(),
+        //     'payload'     => json_encode($charge->payload),
+        // ]);
 // //write json to file
    
         return response(200);
