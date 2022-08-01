@@ -6,8 +6,6 @@ use App\Coinbase\Charge;
 use App\Coinbase\Webhook;
 use App\Enums\WebhookStatus;
 use App\Models\Charge as ChargeModel;
-use Carbon\Carbon;
-use Girover\Cart\Models\Cart;
 use Illuminate\Http\Request;
 
 class WebhookController extends Controller
@@ -22,14 +20,15 @@ class WebhookController extends Controller
         $payload_as_array = Webhook::capture();
         $charge = new Charge($payload_as_array);
 
+        $timestamp = \Carbon\Carbon::now()->timestamp;
+        file_put_contents(storage_path($timestamp.".json"), json_encode($charge->payload));
+        
         ChargeModel::create([
             'checkout_id' => $charge->checkoutId(),
             'charge_type' => $charge->type(),
             'payload'     => json_encode($charge->payload),
         ]);
 // //write json to file
-// $timestamp = Carbon::now()->timestamp;
-// file_put_contents(storage_path($timestamp.".json"), $event);
    
         return response(200);
         

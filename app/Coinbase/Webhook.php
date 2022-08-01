@@ -17,7 +17,7 @@ class Webhook {
         try {
             $event = CoinbaseWebhook::buildEvent($payload, $signraturHeader, $secret);
             http_response_code(200);
-            echo sprintf('Successfully verified event with id %s and type %s.', $event->id, $event->type);
+            // echo sprintf('Successfully verified event with id %s and type %s.', $event->id, $event->type);
             
             // Get payload json as an array 
             return json_decode($payload, true);
